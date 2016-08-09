@@ -585,6 +585,7 @@
         dictionary PaymentMethodData {
           required sequence&lt;DOMString&gt; supportedMethods;
           object data;
+          sequence&lt;RecommendedPaymentApp&gt; recommendedApps;
         };
       </pre>
   <p>
@@ -599,6 +600,33 @@
     <dt><code>data</code></dt>
     <dd><code>data</code> is a <a>JSON-serializable object</a> that provides optional information that
       might be needed by the supported payment methods.</dd>
+    <dt><code>recommendedApps</code></dt>
+    <dd><code>recommendedApps</code> is a <a><code>RecommendedPaymentApp</code></a> dictionary that provides the user agent
+          with enough information to invoke the app.</dd>
+  </dl>
+</section>
+
+<section>
+  <h2>RecommendedPaymentApp</h2>
+      <pre class="idl">
+        dictionary RecommendedPaymentApp {
+          required URLString request_url;
+          required DOMString label;
+          DOMString icon;
+        };
+      </pre>
+  <p>
+    A <a><code>RecommendedPaymentApp</code></a> is used to supply the user agent with enough information to invoke the
+    payment app with or without prior registration. The following fields are part of  <a><code>RecommendedPaymentApp</a></code>:
+  </p>
+  <dl>
+    <dt><code>request_url</code></dt>
+    <dd><code>request_url</code> is a string that represents the <dfn>request URL</dfn>, which is the <a>URL</a> that
+        accepts payment request messages via HTTP POST.</dd>
+    <dt><code>label</code></dt>
+    <dd><code>label</code> is a string that represents the lable for this option as it is usually displayed to the
+        user when selecting a payment app.</dd>
+    <dt><code>icon</code></dt>
   </dl>
 </section>
 
